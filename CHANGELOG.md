@@ -18,7 +18,7 @@ All notable public changes to Rail Junctions are documented here.
 - Removes runtime dependencies on Little Logistics, Useful Railroads, and U-Team-Core.
 - Uses the stable internal mod ID `railmod` for compatibility with existing worlds and resources.
 - Includes LGPL-3.0-only project licensing, Apache-2.0 attribution for Useful Railroads-derived material, source references, and bundled third-party license notices.
-- First-person and third-person held-item positioning for some 3D rail pieces is planned for further visual refinement in a future update.
+- First-person and third-person held-item positioning for some rail pieces, as well as the appearance of some blocks using the vanilla-style fallback resources, will receive further visual refinement in a future update.
 
 ### Development note
 

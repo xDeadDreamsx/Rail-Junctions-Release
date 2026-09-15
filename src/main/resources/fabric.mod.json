@@ -13,6 +13,7 @@
     "sources": "https://github.com/xDeadDreamsx/Rail-Junctions-Release"
   },
   "license": "LGPL-3.0-only",
+  "icon": "assets/railmod/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [

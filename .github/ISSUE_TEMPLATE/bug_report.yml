@@ -1,0 +1,86 @@
+name: Bug report
+description: Report a Rail Junctions bug or compatibility issue
+title: "[Bug] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a Rail Junctions issue. Please fill in the details below.
+
+  - type: input
+    id: railmod-version
+    attributes:
+      label: Rail Junctions version
+      placeholder: "e.g. 1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: minecraft-version
+    attributes:
+      label: Minecraft version
+      placeholder: "e.g. 26.2"
+    validations:
+      required: true
+
+  - type: input
+    id: fabric-versions
+    attributes:
+      label: Fabric Loader / Fabric API versions
+      placeholder: "e.g. Loader 0.19.5, Fabric API 0.159.0+26.2"
+    validations:
+      required: true
+
+  - type: textarea
+    id: relevant-mods
+    attributes:
+      label: Relevant mods and resource packs
+      description: Include minecart/rail mods and whether RAY's 3D Rails is enabled.
+      placeholder: "List relevant mods/resource packs here."
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the actual behavior and what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Place ...
+        2. Power ...
+        3. Send a minecart ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: without-resource-pack
+    attributes:
+      label: Does it also happen without resource packs?
+      options:
+        - "Yes"
+        - "No"
+        - "Not tested"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Crash report / latest.log
+      description: Attach or paste the relevant crash report/log when applicable.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I am using the newest available Rail Junctions build for my Minecraft version.
+          required: true
+        - label: I checked that an older Rail Junctions / Rail Mod JAR is not still present in the mods folder.
+          required: true

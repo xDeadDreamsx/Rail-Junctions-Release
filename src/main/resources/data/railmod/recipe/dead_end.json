@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "III",
+    "S S",
+    "ISI"
+  ],
+  "result": {
+    "count": 4,
+    "id": "railmod:dead_end"
+  }
+}

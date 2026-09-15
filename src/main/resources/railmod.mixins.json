@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "dev.deaddreams.railmod.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "OldMinecartBehaviorMixin",
+    "NewMinecartBehaviorMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "railmod",
+  "version": "${version}",
+  "name": "Rail Junctions",
+  "description": "Vanilla-style rail switches, T-junctions, crossings and buffer stops for Fabric 26.2, with optional RAY's 3D Rails compatibility.",
+  "authors": [
+    "xDeadDreamsx"
+  ],
+  "contact": {
+    "homepage": "https://github.com/xDeadDreamsx/Rail-Junctions-Release",
+    "issues": "https://github.com/xDeadDreamsx/Rail-Junctions-Release/issues",
+    "sources": "https://github.com/xDeadDreamsx/Rail-Junctions-Release"
+  },
+  "license": "LGPL-3.0-only",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.deaddreams.railmod.RailMod"
+    ],
+    "client": [
+      "dev.deaddreams.railmod.client.RailModClient"
+    ]
+  },
+  "mixins": [
+    "railmod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

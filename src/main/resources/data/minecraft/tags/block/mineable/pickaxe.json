@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "railmod:rail_cross",
+    "railmod:dead_end",
+    "railmod:rail_switch",
+    "railmod:tee_junction_rail"
+  ]
+}

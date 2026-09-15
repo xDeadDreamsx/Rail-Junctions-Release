@@ -1,0 +1,110 @@
+name: 1.0 release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release-build:
+    name: Build Rail Junctions 1.0.0
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.5.1'
+
+      - name: Verify release version
+        shell: bash
+        run: |
+          if ! grep -Fxq 'version=1.0.0' gradle.properties; then
+            echo 'gradle.properties is not set to release version 1.0.0'
+            exit 1
+          fi
+
+      - name: Build
+        run: gradle build --stacktrace
+
+      - name: Verify distribution metadata
+        shell: bash
+        run: |
+          MOD_JAR=$(find build/libs -maxdepth 1 -type f -name 'rail-junctions-*.jar' ! -name '*-sources.jar' | head -n 1)
+          if [ -z "$MOD_JAR" ]; then
+            echo 'Main mod JAR not found'
+            exit 1
+          fi
+
+          echo "Checking $MOD_JAR"
+          for entry in \
+            META-INF/LICENSE_railmod \
+            META-INF/COPYING_railmod \
+            META-INF/NOTICE_railmod \
+            META-INF/THIRD_PARTY_railmod.md \
+            META-INF/THIRD_PARTY_LICENSES/Useful-Railroads-Apache-2.0.txt; do
+            if ! unzip -Z1 "$MOD_JAR" | grep -Fxq "$entry"; then
+              echo "Missing distribution file: $entry"
+              exit 1
+            fi
+          done
+
+          if ! unzip -p "$MOD_JAR" fabric.mod.json | grep -Fq '"license": "LGPL-3.0-only"'; then
+            echo 'fabric.mod.json does not declare LGPL-3.0-only'
+            exit 1
+          fi
+
+          if ! unzip -p "$MOD_JAR" fabric.mod.json | grep -Fq '"name": "Rail Junctions"'; then
+            echo 'fabric.mod.json does not declare the public Rail Junctions name'
+            exit 1
+          fi
+
+      - name: Minecraft bootstrap smoke test
+        shell: bash
+        run: |
+          mkdir -p run
+          echo 'eula=true' > run/eula.txt
+          set +e
+          timeout 90s gradle runServer --args='nogui' > smoke-test.log 2>&1
+          code=$?
+          set -e
+          cat smoke-test.log
+
+          if grep -Eq 'MixinApplyError|InvalidMixinException|MixinTransformerError|IllegalClassLoadError|BootstrapMethodError' smoke-test.log; then
+            echo 'Mixin/bootstrap failure detected'
+            exit 1
+          fi
+
+          if grep -Eq "Couldn't parse data file 'railmod:|Failed to parse.*railmod:|Error loading recipe.*railmod:" smoke-test.log; then
+            echo 'Rail Junctions data/recipe parsing failure detected'
+            exit 1
+          fi
+
+          if [ "$code" -ne 0 ] && [ "$code" -ne 124 ]; then
+            echo "Server smoke test exited with code $code"
+            exit "$code"
+          fi
+
+          if ! grep -Eq 'Done \(|For help, type "help"' smoke-test.log; then
+            echo 'Server did not reach a successful startup state'
+            exit 1
+          fi
+
+      - name: Upload 1.0 release artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rail-junctions-1.0-release
+          path: build/libs/rail-junctions-*.jar
+          if-no-files-found: error
+          retention-days: 90

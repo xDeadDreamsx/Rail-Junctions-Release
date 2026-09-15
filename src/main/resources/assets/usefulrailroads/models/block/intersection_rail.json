@@ -1,0 +1,27 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "rail": "minecraft:block/rail",
+    "particle": "minecraft:block/rail"
+  },
+  "elements": [
+    {
+      "from": [0, 1, 0],
+      "to": [16, 1, 16],
+      "shade": false,
+      "faces": {
+        "up": { "uv": [0, 0, 16, 16], "texture": "#rail" },
+        "down": { "uv": [0, 16, 16, 0], "texture": "#rail" }
+      }
+    },
+    {
+      "from": [0, 1.01, 0],
+      "to": [16, 1.01, 16],
+      "shade": false,
+      "faces": {
+        "up": { "uv": [0, 0, 16, 16], "texture": "#rail", "rotation": 90 },
+        "down": { "uv": [0, 16, 16, 0], "texture": "#rail", "rotation": 90 }
+      }
+    }
+  ]
+}

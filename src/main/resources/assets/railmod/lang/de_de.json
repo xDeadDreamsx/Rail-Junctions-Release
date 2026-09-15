@@ -1,0 +1,6 @@
+{
+  "block.railmod.rail_cross": "Schienenkreuzung",
+  "block.railmod.dead_end": "Prellbock",
+  "block.railmod.rail_switch": "Schienenweiche",
+  "block.railmod.tee_junction_rail": "T-Schienenweiche"
+}

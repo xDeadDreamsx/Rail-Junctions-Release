@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rail": {
+      "conditions": {
+        "items": [
+          { "items": "minecraft:rail" }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "railmod:rail_switch"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    ["has_the_recipe", "has_rail"]
+  ],
+  "rewards": {
+    "recipes": ["railmod:rail_switch"]
+  }
+}

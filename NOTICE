@@ -1,0 +1,29 @@
+Rail Junctions
+Copyright (c) 2026 xDeadDreamsx for original Rail Junctions contributions.
+Upstream-derived portions retain their respective upstream copyright and license notices.
+
+Rail Junctions was developed under the working title Rail Mod. The internal mod ID remains `railmod` for compatibility.
+
+Rail Junctions is distributed under the GNU Lesser General Public License v3.0 only (LGPL-3.0-only).
+See LICENSE and COPYING in this distribution.
+
+Portions of the implementation are adapted/reimplemented from behavior found in:
+
+- Little Logistics by Murad Akhundov and contributors
+  https://github.com/MuradAkh/LittleLogistics
+  Relevant upstream Java source is licensed under LGPL-3.0.
+
+- Useful Railroads by U-Team
+  https://github.com/MC-U-Team/Useful-Railroads
+  Licensed under Apache-2.0.
+  Copyright 2017-2025 U-Team (https://u-team.info)
+  A copy of the Apache-2.0 license is included in THIRD_PARTY_LICENSES/Useful-Railroads-Apache-2.0.txt.
+
+Rail Junctions provides optional compatibility with RAY's 3D Rails by xR4YM0ND:
+https://github.com/xR4YM0ND/RAYs-3D-Rails
+No RAY's 3D Rails assets are bundled or redistributed by Rail Junctions.
+
+No original Little Logistics or Useful Railroads art assets are bundled in Rail Junctions.
+See THIRD_PARTY.md for detailed attribution and modification notes.
+
+Rail Junctions is an independent third-party project and is not affiliated with or endorsed by the upstream projects, Mojang, or Microsoft.
